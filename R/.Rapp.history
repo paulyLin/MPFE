@@ -1,0 +1,12 @@
+xx <- list()
+xx
+append(1,xx)
+xx
+xx <- append(1,xx)
+xx
+xx <- append(1,xx)
+xx
+xx <- append(2,xx)
+xx
+xx <- append(xx,4)
+xx

@@ -1,0 +1,8 @@
+MPFE
+=====
+
+Estimate distribution of methylation patterns from a table of counts from a
+bisulphite sequencing experiment given a non-conversion rate and read error
+rate.
+
+See DESCRIPTION and the documentation in man/ for more information.

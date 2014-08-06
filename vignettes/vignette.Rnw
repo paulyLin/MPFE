@@ -1,0 +1,87 @@
+%\VignetteIndexEntry{MPFE data}
+%\VignetteDepends{MPFE}
+%\VignettePackage{MPFE}
+
+\documentclass[12pt]{article}
+
+\usepackage{Sweave}
+
+\textwidth=6.2in
+\textheight=8.5in
+\oddsidemargin=0.2in
+\evensidemargin=0.2in
+\headheight=0in
+\headsep=0in
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\title{MPFE}
+\author{Conrad Burden, Sylvain For\^et, Peijie Lin}
+\date{\today}
+\maketitle
+
+Many of the known mechanisms driving gene regulation fall into the category of epigenomic modifications.
+DNA methylation is a common epigenomic modification, in which a cytosine (C) in the genomic DNA sequence can be altered by the addition of a methyl group.
+Methylation patterns can be are detected by treating DNA with bisulphite, which converts unmethylated cytosines to uracils while leaving methylated cytosines intact.
+This can be carried out at the whole genome level (whole-genome bisulfite sequencing) or at specific loci (PCR amplicons, capture or reduced representation bisulfite sequencing).
+The resulting reads can be mapped to a reference and methylation patterns inferred.
+
+However, the bisulphite conversion is not 100\% efficient, and this introduces errors in the observed distribution of methylation patterns.
+A second source of errors is the sequencing error.
+{\tt MPFE} (for \textbf{M}ethylation \textbf{P}atterns \textbf{F}requency \textbf{E}stimation)~\cite{Lin04} calculates the estimated distribution over methylation patterns based on an input of methylation pattern count data, an incomplete conversion rate and site-dependent read error rates.
+
+The main component of the package is the function {\tt estimatePatterns()}, which generates a table of estimates $\hat\theta_i$ of the distribution over methylation patterns, and a list of patterns identified as spurious.
+Input to the function is a data frame listing the methylation patterns in the first column followed by a number of columns of count data (one column per sample).
+Estimation will be performed on all columns by default unless specified by the variable {\tt column}.
+The non-conversion and sequencing error rates are specified by the parameters {\tt epsilon} and {\tt eta} respectively.
+The parameter {\tt eta} can be specified globally or as a site-dependent array with length equal to the number of CpG sites in sequence of interest.
+The boolean variable {\tt fast} enables either a fast implementation (default) which ignores those patterns for which the observed read count is zero or a slow implementation.
+The parameter {\tt steps} is passed to the function {\tt constrOptim()} to control the accuracy of the determination of the maximum log-likelihood.
+
+A second function in the package is {\tt plotPatterns()}.
+Input to this function is a data frame,
+obtained from the output of {\tt estimatePatterns()}.
+The output of {\tt plotPatterns()} is a plot that compares the observed read distribution with the estimated distribution.
+The parameters {\tt yLimit1} and  {\tt yLimit2} control the range of the y-axis on the plots produced.
+
+In the following example, the input is the table of counts {\tt patternsExample}.
+We analyse the second column.
+The parameter {\tt epsilon} is 0.01, while the parameter {\tt eta} is not specified and by default is 0.
+
+<<>>=
+library(MPFE)
+data(patternsExample)
+patternsExample
+estimatePatterns(patternsExample, epsilon=0.01, column=2)
+@
+
+Note that in this example two patterns have been identified as spurious; they are patterns {\tt 01010} and {\tt 11000}.
+
+The following example uses the same input table.
+The {\tt column} variable is not specified,
+so the function {\tt estimatePatterns()} by default applies to both columns of counts.
+The sequencing error rate {\tt eta} is specified as a site-dependent array.
+
+<<>>=
+estimates <- estimatePatterns(patternsExample,
+                              epsilon=0.01,
+                              eta=c(0.008, 0.01, 0.01, 0.01, 0.008))
+estimates
+@
+
+The ouput is a list of two data frames;
+now we plot the second data frame.
+Two plots are produced: the lower plot is the expanded version of the upper plot.
+
+
+<<fig=TRUE>>=
+plotPatterns(estimates[[2]])
+@
+
+\begin{thebibliography}{}
+\bibitem{Lin04}
+Lin, P., For\^et, S., Wilson, S.R.\ and Burden, C.J., {\it Estimation of the methylation pattern distribution from deep sequencing data} (preprint)
+\end{thebibliography}
+
+\end{document}
