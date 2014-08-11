@@ -27,7 +27,7 @@
 	The parameters yLimit1 and yLimit2 control the range of the y_axis on the plots produced.
 }
 \value{
-	a plot that compares the observed read distribution with the estimated distribution. 
+	A plot that compares the observed read distribution with the estimated distribution. 
 }
 \references{
 %% ~put references to the literature/web site here ~

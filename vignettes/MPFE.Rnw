@@ -1,4 +1,4 @@
-%\VignetteIndexEntry{MPFE data}
+
 %\VignetteDepends{MPFE}
 %\VignettePackage{MPFE}
 

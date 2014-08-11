@@ -2,12 +2,11 @@ estimatePatternsOneColumn <- function(patternCounts,
                                       epsilon,
                                       eta,
                                       column,
-                                      fast=TRUE,
-                                      steps=20000)
+                                      fast,
+                                      steps)
 {
     patternCounts <- patternCounts[, c(1, column + 1)]
-    names(patternCounts) <- c('patterns','counts')
-    patternCounts$patterns <- gsub('^[^01]', '', as.character(patternCounts$patterns))    
+    names(patternCounts) <- c('patterns','counts')   
     patternCounts <- patternCounts[patternCounts$counts !=0, ]
     nCpGsites <- nchar(patternCounts$patterns[1])
 
