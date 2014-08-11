@@ -81,7 +81,7 @@ plotPatterns(estimates[[2]])
 
 \begin{thebibliography}{}
 \bibitem{Lin04}
-Lin, P., For\^et, S., Wilson, S.R.\ and Burden, C.J., {\it Estimation of the methylation pattern distribution from deep sequencing data} (preprint)
+Lin, P., For\^et, S., Wilson, S.R.\ and Burden, C.J., {\it Estimation of the methylation pattern distribution from deep sequencing data.} (preprint)
 \end{thebibliography}
 
 \end{document}

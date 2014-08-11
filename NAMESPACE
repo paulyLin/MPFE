@@ -1,3 +1,1 @@
-exportPattern("patternsExample",
-              "estimatePatterns",
-              "plotPatterns")
+export(estimatePatterns, plotPatterns, estimatePatternsOneColumn)

@@ -23,14 +23,11 @@
   }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+	The two graphs in the output plot are the same but have different ranges. 
+	The parameters yLimit1 and yLimit2 control the range of the y_axis on the plots produced.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+	a plot that compares the observed read distribution with the estimated distribution. 
 }
 \references{
 %% ~put references to the literature/web site here ~

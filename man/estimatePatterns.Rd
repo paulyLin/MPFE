@@ -32,20 +32,20 @@
     rate across all sites.
   }
   \item{column}{
-    index of the column of `patternCounts' to process, an integer value from 1
-    to the number of pattern counts columns in `patternCounts'.  If NULL, defaults
-    to all columns.
+    a vector that specifies the indices of the columns of `patternCounts' to process. 
+    Its entries are integer values from 1
+    to the number of pattern counts columns in `patternCounts'.  
+    If NULL, defaults to all columns.
   }
   \item{fast}{
     logical, if TRUE, fast version implemented (default).
   }
   \item{steps}{
     number of steps for the optimiser, passed to \code{\link{constrOptim}}.
+    If NULL, defaults to 20000 steps.
   }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
  The function returns a list of data frames.
 
