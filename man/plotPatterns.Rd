@@ -29,21 +29,15 @@
 \value{
 	A plot that compares the observed read distribution with the estimated distribution. 
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
   Peijie Lin, Sylvain Foret, Conrad Burden
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+
 \examples{
   data(patternsExample)
   estimates <- estimatePatterns(patternsExample, 

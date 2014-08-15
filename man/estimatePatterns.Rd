@@ -66,21 +66,15 @@ The data frames contain the following columns:
     indicates whether the patterns are real or spurious (logical)
   }
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
   Peijie Lin, Sylvain Foret, Conrad Burden
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+
 \examples{
   data(patternsExample)
   estimatePatterns(patternsExample, 

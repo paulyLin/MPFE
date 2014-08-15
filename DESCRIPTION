@@ -1,10 +1,10 @@
 Package: MPFE
 Type: Package
 Title: Estimation of the amplicon methylation pattern distribution from bisulphite sequencing data.
-Version: 0.99.0
+Version: 0.99.1
 Date: 2014-05-02
 Author: Peijie Lin, Sylvain Foret, Conrad Burden
-biocViews: sequencing, DNAMethylation, MethylSeq
+biocViews: HighThroughputSequencingData, DNAMethylation, MethylSeq
 Maintainer: Conrad Burden <conrad.burden@anu.edu.au>
 Description: Estimate distribution of methylation patterns from a table of counts from a bisulphite sequencing experiment given a non-conversion rate and read error rate.
 License: GPL (>= 3)

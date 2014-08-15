@@ -30,8 +30,6 @@
   Maintainer: conrad.burden@anu.edu.au
 }
 
-\references{
-}
 
 \keyword{
   amplicon,
@@ -40,8 +38,6 @@
   methylation
 }
 
-\seealso{
-}
 
 \examples{
   data(patternsExample)
