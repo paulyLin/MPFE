@@ -3,7 +3,8 @@ estimatePatternsOneColumn <- function(patternCounts,
                                       eta,
                                       column,
                                       fast,
-                                      steps)
+                                      steps,
+                                      reltol)
 {
     patternCounts <- patternCounts[, c(1, column + 1)]
     names(patternCounts) <- c('patterns','counts')   
@@ -110,7 +111,22 @@ estimatePatternsOneColumn <- function(patternCounts,
         likelihoodOpted <- likelihood(expand(theta, patternsMax))
         return(likelihoodOpted)
     }
-
+	
+	likelihood_grad <- function(theta){
+		theta2 <- expand(theta, reads_max)
+		phi <- as.vector(theta2 %*% conversionMatrix)
+		
+		if (fast) {
+			likelihood_grad2 <- colSums(apply(conversionMatrix, 1, function(x) y_reads*x/phi))
+		} else {
+			likelihood_grad2 <- colSums(apply(conversionMatrix, 1, 
+											function(x) (y_reads*x)[y_reads !=0]/phi[y_reads!=0]))
+		}
+		likelihood_grad <- -likelihood_grad2[-reads_max]+sum(y_reads*conversionMatrix[reads_max,]/phi)
+		return(likelihood_grad)
+	}
+	
+		
     # Optimisation
 
     startingVector <- yWithoutMax / totalPatterns
@@ -119,11 +135,11 @@ estimatePatternsOneColumn <- function(patternCounts,
 
     constraintMatrix <- rbind(diag(size - 1), rep(-1, size - 1))
     constraintVector <- append(rep(0, size - 1), -1)
-    opt <- constrOptim(startingVector, likelihoodOpt, grad=NULL,
+    opt <- constrOptim(startingVector, likelihoodOpt, grad=likelihood_grad,
                         ui=constraintMatrix,
                         ci=constraintVector,
-                        method='Nelder-Mead',
-                        control=list(maxit=steps))
+                        method='BFGS',
+                        control=list(maxit=steps, reltol=reltol))
 
     recovered <- expand(opt$par, patternsMax)
 

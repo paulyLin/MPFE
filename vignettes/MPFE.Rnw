@@ -37,7 +37,7 @@ Estimation will be performed on all columns by default unless specified by the v
 The non-conversion and sequencing error rates are specified by the parameters {\tt epsilon} and {\tt eta} respectively.
 The parameter {\tt eta} can be specified globally or as a site-dependent array with length equal to the number of CpG sites in sequence of interest.
 The boolean variable {\tt fast} enables either a fast implementation (default) which ignores those patterns for which the observed read count is zero or a slow implementation.
-The parameter {\tt steps} is passed to the function {\tt constrOptim()} to control the accuracy of the determination of the maximum log-likelihood.
+The parameters {\tt steps} and {\tt reltol} are passed to the function {\tt constrOptim()} to control the accuracy of the determination of the maximum log-likelihood.
 
 A second function in the package is {\tt plotPatterns()}.
 Input to this function is a data frame,

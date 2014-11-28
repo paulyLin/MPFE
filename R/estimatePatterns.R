@@ -3,7 +3,8 @@ estimatePatterns <- function(patternCounts,
                              eta=0,
                              column=NULL,
                              fast=TRUE,
-                             steps=20000)
+                             steps=20000,
+                             reltol=1e-12)
 {
     # Check the patterns
     # First, strip any leading character different from 01
@@ -51,7 +52,8 @@ estimatePatterns <- function(patternCounts,
                                                       eta,
                                                       column=columns[i],
                                                       fast,
-                                                      steps)
+                                                      steps,
+                                                      reltol)
     }
 
     return(compareData)

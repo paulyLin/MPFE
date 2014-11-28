@@ -44,6 +44,10 @@
     number of steps for the optimiser, passed to \code{\link{constrOptim}}.
     If NULL, defaults to 20000 steps.
   }
+  \item{reltol}{
+  	relative tolerance for the optimiser, passed to \code{\link{constrOptim}}.
+  	If NULL, defaults to 1e-12.
+  }
 }
 
 \value{
