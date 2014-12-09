@@ -113,16 +113,16 @@ estimatePatternsOneColumn <- function(patternCounts,
     }
 	
 	likelihood_grad <- function(theta){
-		theta2 <- expand(theta, reads_max)
+		theta2 <- expand(theta, patternsMax)
 		phi <- as.vector(theta2 %*% conversionMatrix)
 		
 		if (fast) {
-			likelihood_grad2 <- colSums(apply(conversionMatrix, 1, function(x) y_reads*x/phi))
+			likelihood_grad2 <- colSums(apply(conversionMatrix, 1, function(x) yPatterns*x/phi))
 		} else {
 			likelihood_grad2 <- colSums(apply(conversionMatrix, 1, 
-											function(x) (y_reads*x)[y_reads !=0]/phi[y_reads!=0]))
+											function(x) (yPatterns*x)[yPatterns !=0]/phi[yPatterns !=0]))
 		}
-		likelihood_grad <- -likelihood_grad2[-reads_max]+sum(y_reads*conversionMatrix[reads_max,]/phi)
+		likelihood_grad <- -likelihood_grad2[-patternsMax]+sum(yPatterns*conversionMatrix[patternsMax,]/phi)
 		return(likelihood_grad)
 	}
 	
