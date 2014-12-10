@@ -15,7 +15,8 @@
                    eta=0,
                    column=NULL,
                    fast=TRUE,
-                   steps=20000)
+                   steps=20000,
+                   reltol=1e-12)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -45,8 +46,8 @@
     If NULL, defaults to 20000 steps.
   }
   \item{reltol}{
-  	relative tolerance for the optimiser, passed to \code{\link{constrOptim}}.
-  	If NULL, defaults to 1e-12.
+    relative tolerance for the optimiser, passed to \code{\link{constrOptim}}.
+    If NULL, defaults to 1e-12.
   }
 }
 
