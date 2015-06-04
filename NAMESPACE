@@ -1,1 +1,1 @@
-export(estimatePatterns, plotPatterns)
+export(estimatePatterns, plotPatterns, patternMap)

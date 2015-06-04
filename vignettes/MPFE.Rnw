@@ -70,18 +70,50 @@ estimates <- estimatePatterns(patternsExample,
 estimates
 @
 
-The ouput is a list of two data frames;
-now we plot the second data frame.
+The ouput is a list of two data frames.
+We plot the observed and estimated pattern of the second data frame on figure 1.
 Two plots are produced: the lower plot is the expanded version of the upper plot.
 
 
+\begin{figure}
 <<fig=TRUE>>=
 plotPatterns(estimates[[2]])
 @
+\caption{Plot of observed and estimated frequencies with \texttt{plotPatterns}}
+\end{figure}
+
+We can also plot a map of the patterns and their frequencies.
+For instance, figure 2 illustrates different ways to plot all the patterns with  frequency of 50\% or less.
+
+\begin{figure}
+<<fig=TRUE>>=
+par(mfrow=c(2, 2))
+patternMap(estimates[[1]],
+           maxFreq=0.5,
+           main='Estimated frequencies')
+patternMap(estimates[[1]],
+           estimatedDistribution=FALSE,
+           maxFreq=0.5,
+           topDown=FALSE,
+           main='Observed frequencies')
+patternMap(estimates[[1]],
+           maxFreq=0.5,
+           methCol=colorRampPalette(c('red', 'blue')),
+           unMethCol='lightgrey',
+           main='Estimated frequencies')
+patternMap(estimates[[1]],
+           estimatedDistribution=FALSE,
+           maxFreq=0.5,
+           methCol=c('bisque4', 'azure4'),
+           unMethCol=c('beige', 'azure'),
+           main='Observed frequencies')
+@
+\caption{Different ways to plot the estimated frequencies with \texttt{patternMap}}
+\end{figure}
 
 \begin{thebibliography}{}
-\bibitem{Lin04}
-Lin, P., For\^et, S., Wilson, S.R.\ and Burden, C.J., {\it Estimation of the methylation pattern distribution from deep sequencing data.} (preprint)
+\bibitem{Lin05}
+Lin, P., For\^et, S., Wilson, S.R.\ and Burden, C.J., {\it Estimation of the methylation pattern distribution from deep sequencing data.} BMC Bioinformatics 2015, 16:145  doi:10.1186/s12859-015-0600-6
 \end{thebibliography}
 
 \end{document}
