@@ -8,7 +8,7 @@ estimatePatterns <- function(patternCounts,
 {
     # Check the patterns
     # First, strip any leading character different from 01
-    patterns <- gsub('^[^01]', '', as.character(patternCounts[, 1]))
+    patterns <- gsub('[^01]', '', as.character(patternCounts[, 1]))
     # Make sure we only have zeros and ones:
     matches <- grep('[01]+', patterns, invert=TRUE)
     if (length(matches) > 0) {
